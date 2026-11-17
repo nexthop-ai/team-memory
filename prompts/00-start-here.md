@@ -14,6 +14,19 @@ Each prompt in this folder has a defined input bundle and is written for a fresh
 | 6 | `06-operational-hardening.md` | 04, 05 | Operations, mirror, recovery and load testing. |
 | 7 | `07-client-verification-and-release.md` | 06 | Cross-client milestone, OSS release prep. Publishing stays a manual decision. |
 
+## Search performance enhancements
+
+These follow-up implementation prompts target the existing service. Run them in sequence, using current repository evidence and the preceding enhancement handoff. They do not require rerunning the original seven build stages or completing the original private pilot. Their creation does not implement or deploy the enhancements.
+
+| # | File | Depends on | Notes |
+| --- | --- | --- | --- |
+| 8 | `08-search-provider-reliability.md` | Existing retrieval implementation | Measure latency, diagnose provider availability, configure model residency. |
+| 9 | `09-query-embedding-cache.md` | 08 | Bounded query embedding cache with cancellation-safe request coalescing. |
+| 10 | `10-overlap-search-retrieval.md` | 09 | Overlap keyword retrieval and query embedding while preserving authorization and transaction behavior. |
+| 11 | `11-query-provider-circuit-breaker.md` | 10 | Fail fast during provider outages and recover automatically. |
+
+Read each prompt's own Inputs section for its input bundle; the original-stage attachment list below applies to stages 01–07. Follow the global rules and report incomplete checks in each enhancement handoff. Keep asynchronous revision embedding and existing retrieval/security guarantees throughout.
+
 ## Where things live
 
 - One repository holds everything: Planning artifacts (`proposal.md`, `review*.md`, `prompts/`) and the service code (`cmd/`, `internal/`, `migrations/`, ...) live side by side at its root.
